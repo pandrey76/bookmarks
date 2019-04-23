@@ -1,0 +1,56 @@
+admin1@ubuntu18:~/Programming/WEB/Backends/bookmarks$ . bin/activate
+(bookmarks) admin1@ubuntu18:~/Programming/WEB/Backends/bookmarks$ deactivate
+admin1@ubuntu18:~/Programming/WEB/Backends/bookmarks$ mkdir bookmarks_env
+admin1@ubuntu18:~/Programming/WEB/Backends/bookmarks$ cd bookmarks_env
+admin1@ubuntu18:~/Programming/WEB/Backends/bookmarks/bookmarks_env$ virtualenv -p python3 .
+Already using interpreter /usr/bin/python3
+Using base prefix '/usr'
+New python executable in /home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/bin/python3
+Also creating executable in /home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/bin/python
+Installing setuptools, pip, wheel...
+done.
+admin1@ubuntu18:~/Programming/WEB/Backends/bookmarks/bookmarks_env$ pip3 install "Django~=2.0.0,<2.1"
+Collecting Django<2.1,~=2.0.0
+  Cache entry deserialization failed, entry ignored
+  Using cached https://files.pythonhosted.org/packages/67/b0/64645bd6c5cdabb07d361e568eecfa9e64027ae4cb4778bb00be8c4bde00/Django-2.0.13-py3-none-any.whl
+Collecting pytz (from Django<2.1,~=2.0.0)
+  Cache entry deserialization failed, entry ignored
+  Using cached https://files.pythonhosted.org/packages/3d/73/fe30c2daaaa0713420d0382b16fbb761409f532c56bdcc514bf7b6262bb6/pytz-2019.1-py2.py3-none-any.whl
+Installing collected packages: pytz, Django
+Successfully installed Django-2.0.13 pytz-2019.1
+admin1@ubuntu18:~/Programming/WEB/Backends/bookmarks/bookmarks_env$ . bin/activate
+(bookmarks_env) admin1@ubuntu18:~/Programming/WEB/Backends/bookmarks/bookmarks_env$ pip3 install "Django~=2.0.0,<2.1"
+Collecting Django<2.1,~=2.0.0
+  Using cached https://files.pythonhosted.org/packages/67/b0/64645bd6c5cdabb07d361e568eecfa9e64027ae4cb4778bb00be8c4bde00/Django-2.0.13-py3-none-any.whl
+Collecting pytz (from Django<2.1,~=2.0.0)
+  Using cached https://files.pythonhosted.org/packages/3d/73/fe30c2daaaa0713420d0382b16fbb761409f532c56bdcc514bf7b6262bb6/pytz-2019.1-py2.py3-none-any.whl
+Installing collected packages: pytz, Django
+Successfully installed Django-2.0.13 pytz-2019.1
+(bookmarks_env) admin1@ubuntu18:~/Programming/WEB/Backends/bookmarks/bookmarks_env$ pip3 install --upgrade pip
+Requirement already up-to-date: pip in ./lib/python3.6/site-packages (19.0.3)
+(bookmarks_env) admin1@ubuntu18:~/Programming/WEB/Backends/bookmarks/bookmarks_env$ pip3 install djangorestframework
+Collecting djangorestframework
+  Using cached https://files.pythonhosted.org/packages/cc/6d/5f225f18d7978d8753c1861368efc62470947003c7f9f9a5cc425fc0689b/djangorestframework-3.9.2-py2.py3-none-any.whl
+Installing collected packages: djangorestframework
+Successfully installed djangorestframework-3.9.2
+(bookmarks_env) admin1@ubuntu18:~/Programming/WEB/Backends/bookmarks/bookmarks_env$ pip3 freeze
+Django==2.0.13
+djangorestframework==3.9.2
+pytz==2019.1
+(bookmarks_env) admin1@ubuntu18:~/Programming/WEB/Backends/bookmarks/bookmarks_env$ pip3 freeze > requirements.txt
+(bookmarks_env) admin1@ubuntu18:~/Programming/WEB/Backends/bookmarks/bookmarks_env$ cd ..
+(bookmarks_env) admin1@ubuntu18:~/Programming/WEB/Backends/bookmarks$ python3 -m django --version
+2.0.13
+(bookmarks_env) admin1@ubuntu18:~/Programming/WEB/Backends/bookmarks$ django-admin startproject bookmarks
+(bookmarks_env) admin1@ubuntu18:~/Programming/WEB/Backends/bookmarks$ ls
+bookmarks  bookmarks_env  Doc
+(bookmarks_env) admin1@ubuntu18:~/Programming/WEB/Backends/bookmarks$ cd bookmarks
+(bookmarks_env) admin1@ubuntu18:~/Programming/WEB/Backends/bookmarks/bookmarks$ ls
+bookmarks  manage.py
+(bookmarks_env) admin1@ubuntu18:~/Programming/WEB/Backends/bookmarks/bookmarks$ ls bookmarks
+__init__.py  settings.py  urls.py  wsgi.py
+(bookmarks_env) admin1@ubuntu18:~/Programming/WEB/Backends/bookmarks/bookmarks$ python3 manage.py startapp locations
+(bookmarks_env) admin1@ubuntu18:~/Programming/WEB/Backends/bookmarks/bookmarks$ ls locations
+admin.py  apps.py  __init__.py  migrations  models.py  tests.py  views.py
+(bookmarks_env) admin1@ubuntu18:~/Programming/WEB/Backends/bookmarks/bookmarks$ deactivate
+admin1@ubuntu18:~/Programming/WEB/Backends/bookmarks/bookmarks$ clear
