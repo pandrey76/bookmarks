@@ -15,15 +15,17 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '==!#evm92b*@$rqc43#tg#tr6rwz9y%80%bw52&j#@7@v0%v)3'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if DEBUG:
+    SECRET_KEY = '==!#evm92b*@$rqc43#tg#tr6rwz9y%80%bw52&j#@7@v0%v)3'
+# else:
+    # SECRET_KEY = Взять из своего virtual_env, наверно из какого -нибудь файла.
 
 ALLOWED_HOSTS = []
 
@@ -37,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'locations',
 ]
 
 MIDDLEWARE = [
@@ -75,8 +78,12 @@ WSGI_APPLICATION = 'bookmarks.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',  # 'django.db.backends.sqlite3',
+        'NAME': 'bookmarks',  # os.path.join(BASE_DIR, 'db.sqlite3'),
+        'USER': 'bookmarskuser',
+        'PASSWORD': 'mypasswordhere',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
