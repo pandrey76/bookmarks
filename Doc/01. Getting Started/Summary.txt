@@ -1,0 +1,5 @@
+﻿Summary
+      -     Setup our development environment including Python, Django, and DRF;
+      -     Introduced to and installed PostgreSQL;
+      -     Created a Django project and an app within in;
+      -     Configured settings.py and viewed our site using runserver.

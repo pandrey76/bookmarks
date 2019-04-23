@@ -1,0 +1,28 @@
+bookmarks_env) admin1@ubuntu18:~/Programming/WEB/Backends/bookmarks/bookmarks$ sudo su - postgres
+[sudo] пароль для admin1:
+postgres@ubuntu18:~$ export PATH=/usr/lib/postgresql/11/bin/:$PATH
+postgres@ubuntu18:~$ psql
+psql (11.2 (Ubuntu 11.2-1.pgdg18.04+1), сервер 10.7 (Ubuntu 10.7-1.pgdg18.04+1))
+Введите "help", чтобы получить справку.
+
+postgres=# CREATE DATABASE bookmarks;
+CREATE DATABASE
+postgres=# CREATE USER bookmarksuser WITH PASSWORD 'mypasswordhere';
+CREATE ROLE
+postgres=# ALTER ROLE bookmarksuser SET client_encoding TO 'utf8';
+ALTER ROLE
+postgres=# ALTER ROLE bookmarksuser SET default_transaction_isolation TO 'read committed';
+ALTER ROLE
+postgres=# ALTER ROLE bookmarksuser SET timezone TO 'UTC';
+ALTER ROLE
+postgres=# export PATH=/usr/lib/postgresql/11/bin/:$PATH
+postgres-# export PATH=/usr/lib/postgresql/11/bin/:$PATH;
+ОШИБКА:  ошибка синтаксиса (примерное положение: "export")
+СТРОКА 1: export PATH=/usr/lib/postgresql/11/bin/:$PATH
+          ^
+postgres=# export PATH=/usr/lib/postgresql/11/bin/:$PATH;                                                                                                                                                   ОШИБКА:  ошибка синтаксиса (примерное положение: "export")
+СТРОКА 1: export PATH=/usr/lib/postgresql/11/bin/:$PATH;
+          ^
+postgres=# GRANT ALL PRIVILEGES ON DATABASE bookmarks TO bookmarksuser;
+GRANT
+

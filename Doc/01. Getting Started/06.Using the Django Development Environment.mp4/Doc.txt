@@ -1,0 +1,11 @@
+    • settings.py
+    • Database configuration
+    • DEBUG flag
+    • Sensetive information in settings.py
+    • runserver
+
+	runserver
+            • Used for debugging purposes only;
+            • Requires DEBUG=True;
+            • Lacks deployment features and robustness to be used in production;
+            • The Django project will not develop runserver into a production web server.
