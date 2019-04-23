@@ -2,6 +2,8 @@ $ sudo su - postgres
 
 postgres@ubuntu18:~$ export PATH=/usr/lib/postgresql/11/bin/:$PATH
 
+postgres@ubuntu18:~$ psql
+
 postgres=# CREATE DATABASE bookmarks;
 postgres=# CREATE USER bookmarksuser WITH PASSWORD 'mypasswordhere';
 postgres=# ALTER ROLE bookmarksuser SET client_encoding TO 'utf8';

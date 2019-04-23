@@ -80,7 +80,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',  # 'django.db.backends.sqlite3',
         'NAME': 'bookmarks',  # os.path.join(BASE_DIR, 'db.sqlite3'),
-        'USER': 'bookmarskuser',
+        'USER': 'bookmarksuser',
         'PASSWORD': 'mypasswordhere',
         'HOST': 'localhost',
         'PORT': '5432',
