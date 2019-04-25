@@ -1,0 +1,7 @@
+
+        In this Video, we are going to take a look at...
+
+          - Concept of Model View Controller and Model View Template frameworks;
+          - Django models;
+          - Django views and forms;
+          - Django templates.

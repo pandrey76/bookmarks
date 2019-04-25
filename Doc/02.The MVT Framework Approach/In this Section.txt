@@ -1,0 +1,8 @@
+
+        In this Section, we are going to take a look at...
+
+            - Model View Controller and Model View Template frameworks;
+            - Creating and working with models and migrations;
+            - View, routing, and HTTP methods;
+            - Django templates;
+            - Testing.

@@ -1,0 +1,54 @@
+
+    Model View Controller
+
+      - Model or Entity - permanent/persistent data, state;
+      - View or Boundary - presentation to outside (users), interface;
+      - Controller - system logic that connects of Model/Enity to View/Boundary.
+
+    Separation of Concerns
+
+      - In an MVC framework, code about data and state of data be confined to
+        the Model layer;
+      - Presentation code/logic is confined to the View layer;
+      - Glue logic is confined to the Controller layer;
+      - Many design approuches attempt to reduce logic in this layer;
+      - Avoid mixing between the three layers.
+
+    Django Models - The 'M' of MVC
+      * A Django model is an abstraction of persistent data
+                  (typically database data)
+        - The class represents a database table;
+        - The object instance represents a database row:
+
+            class Comment(Model):
+                bookmark = ForeignKey(Bookmark, on_delete = models.CASCADE,
+                                                     related_name = 'comments')
+                time = DateTimeField(auto_now_add = True, null = False,
+                                                                  blank = True)
+                text = TextField()
+
+                def __str__(se lf):
+                    return self.text
+
+    Django Views - The 'C'of MVC (a nd a bit of the 'V')
+      * The Django view is responsible for:
+        - Logic decisions based on the incoming request, including validation;
+        - Storing and retrieving data;
+        - Choosing which Template to use, or do something else, for example:
+                                             redirect elsewhere;
+        - Preparing data for the Template.
+
+    Django Models - The 'C' of MVC
+        - A Django form is a control object that is used by a View to manage
+                           structured data such as form data provided by users;
+        - Validation of structured data is carried out by forms;
+        - Structured data from models can be managed by a Django form, both for
+                            validation before storage and retrieving on request.
+
+    Django Models - The 'V' of MVC
+      * A Django Template:
+        - Receives data prepared by a view;
+        - Renders output (for example: HTML) which makes use of the data;
+      * Django Templates are concerned only with presentation of data;
+      * They effectively translate system information into a format that
+                           can be understood and viewed by the browser user.
