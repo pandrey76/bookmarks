@@ -1,0 +1,75 @@
+
+    Django Models - The 'M' of MVC
+      * A Django model is an abstraction of persistent data
+                  (typically database data)
+        - The class represents a database table;
+        - The object instance represents a database row:
+
+            class Comment(Model):
+                bookmark = ForeignKey(Bookmark, on_delete = models.CASCADE,
+                                                     related_name = 'comments')
+                time = DateTimeField(auto_now_add = True, null = False,
+                                                                  blank = True)
+                text = TextField()
+
+                def __str__(se lf):
+                    return self.text
+
+    Relationships (1-to-M)
+
+      Comment ---> Bookmark
+
+      class Comment(Model):
+          bookmark = ForeignKey(Bookmark, on_delete = models.CASCADE,
+                                                     related_name = 'comments')
+
+    Relationships (Alternative 1-to-1)
+
+       Comment --- Bookmark
+
+       class Comment(Model):
+                bookmark = OneToOneField(Bookmark, on_delete = models.CASCADE,
+                                                     related_name = 'comments')
+
+    Relationships (Alternative M-to-M)
+
+       Comment <---> Bookmark
+
+       class Comment(Model):
+                bookmark = ManyToManyField(Bookmark, related_name = 'comments')
+
+
+
+    Model Method
+      * Operate on instances of a model - like the row of database table
+        - A Django model is an abstraction of persistent data
+                  (typically database data);
+        - The class represents a database table;
+        - The object instance represents a database row;
+
+            class Comment(Model):
+
+                . . .
+
+                def __str__(se lf):
+                    return self.text
+
+    Testing Models
+      * Ensuring methods work as expected
+       - models.py
+           class Comment(Model):
+                bookmark = ForeignKey(Bookmark, on_delete = models.CASCADE,
+                                                     related_name = 'comments')
+                text = TextField()
+
+                def __str__(se lf):
+                    return self.text
+        - test.py
+            from django.test import SimpleTestCase
+            from .models import Comment
+
+            class TestComment(SimpleTestCase):
+
+                def test_str(self):
+                    comment = Comment(text='my test string')
+                    self.assertEqual(str(comment), 'my test string')

@@ -1,0 +1,7 @@
+
+    In this Video, we are going to take a look at...
+      - What is Model;
+      - Relationships between Models;
+      - Creating a Model;
+      - Model methods;
+      - Testing.

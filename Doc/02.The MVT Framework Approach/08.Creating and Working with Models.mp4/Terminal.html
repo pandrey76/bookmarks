@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<pre>
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~</b></font>$ cd Programming
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming</b></font>$ cd WEB
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB</b></font>$ cd Backends
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends</b></font>$ cd bookmarks
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks</b></font>$ ls
+<font color="#729FCF"><b>bookmarks</b></font>  <font color="#729FCF"><b>bookmarks_env</b></font>  <font color="#729FCF"><b>Doc</b></font>
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks</b></font>$ . bookmarks_env/bin/activate
+(bookmarks_env) <font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks</b></font>$ cd bookmarks
+(bookmarks_env) <font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks/bookmarks</b></font>$ ./manage.py shell
+Python 3.6.7 (default, Oct 22 2018, 11:32:17)
+[GCC 8.2.0] on linux
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+(InteractiveConsole)
+&gt;&gt;&gt; from locations.models import Bookmark, Comment
+&gt;&gt;&gt; bookmark = Bookmark(link=&quot;google.com&quot;)
+&gt;&gt;&gt; comment = Comment(text=&quot;I like searching here&quot;, bookmark=bookmark)
+&gt;&gt;&gt; comment
+&lt;Comment: I like searching here&gt;
+&gt;&gt;&gt; bookmark
+&lt;Bookmark: google.com&gt;
+&gt;&gt;&gt; comment.bookmark
+&lt;Bookmark: google.com&gt;
+&gt;&gt;&gt; bookmark.link
+&apos;google.com&apos;
+&gt;&gt;&gt; bookmark.link = &quot;cnn.com&quot;
+&gt;&gt;&gt; comment.bookmark
+&lt;Bookmark: cnn.com&gt;
+&gt;&gt;&gt; bookmark.link = &quot;google.com&quot;
+&gt;&gt;&gt; comment.bookmark
+&lt;Bookmark: google.com&gt;
+&gt;&gt;&gt; comment.link_str()
+&apos;This comment: I like searching here is for link: google.com&apos;
+</pre>
+</body>
+</html>
