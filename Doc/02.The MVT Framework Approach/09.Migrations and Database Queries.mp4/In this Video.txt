@@ -1,0 +1,7 @@
+
+    In this Video, we are going to take a look at...
+      - What are migrations;
+      - Django generated migrations;
+      - Data migrations;
+      - Applying migrations;
+      - Querying the database.

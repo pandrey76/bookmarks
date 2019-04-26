@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<pre><font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~</b></font>$ cd Programming
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming</b></font>$ cd WEB
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB</b></font>$ cd Backends
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends</b></font>$ cd bookmarks
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks</b></font>$ cd bookmarks
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks/bookmarks</b></font>$ . ../bookmarks_env/bin/activate
+(bookmarks_env) <font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks/bookmarks</b></font>$ ./manage.py makemigrations
+<font color="#34E2E2"><b>Migrations for &apos;locations&apos;:</b></font>
+  <b>locations/migrations/0001_initial.py</b>
+    - Create model Bookmark
+    - Create model Comment
+(bookmarks_env) <font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks/bookmarks</b></font>$ ./manage.py showmigrations
+<b>admin</b>
+ [ ] 0001_initial
+ [ ] 0002_logentry_remove_auto_add
+<b>auth</b>
+ [ ] 0001_initial
+ [ ] 0002_alter_permission_name_max_length
+ [ ] 0003_alter_user_email_max_length
+ [ ] 0004_alter_user_username_opts
+ [ ] 0005_alter_user_last_login_null
+ [ ] 0006_require_contenttypes_0002
+ [ ] 0007_alter_validators_add_error_messages
+ [ ] 0008_alter_user_username_max_length
+ [ ] 0009_alter_user_last_name_max_length
+<b>contenttypes</b>
+ [ ] 0001_initial
+ [ ] 0002_remove_content_type_name
+<b>locations</b>
+ [ ] 0001_initial
+<b>sessions</b>
+ [ ] 0001_initial
+(bookmarks_env) <font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks/bookmarks</b></font>$ ./manage.py migrate
+<font color="#34E2E2"><b>Operations to perform:</b></font>
+<b>  Apply all migrations: </b>admin, auth, contenttypes, locations, sessions
+<font color="#34E2E2"><b>Running migrations:</b></font>
+  Applying contenttypes.0001_initial...<font color="#8AE234"><b> OK</b></font>
+  Applying auth.0001_initial...<font color="#8AE234"><b> OK</b></font>
+  Applying admin.0001_initial...<font color="#8AE234"><b> OK</b></font>
+  Applying admin.0002_logentry_remove_auto_add...<font color="#8AE234"><b> OK</b></font>
+  Applying contenttypes.0002_remove_content_type_name...<font color="#8AE234"><b> OK</b></font>
+  Applying auth.0002_alter_permission_name_max_length...<font color="#8AE234"><b> OK</b></font>
+  Applying auth.0003_alter_user_email_max_length...<font color="#8AE234"><b> OK</b></font>
+  Applying auth.0004_alter_user_username_opts...<font color="#8AE234"><b> OK</b></font>
+  Applying auth.0005_alter_user_last_login_null...<font color="#8AE234"><b> OK</b></font>
+  Applying auth.0006_require_contenttypes_0002...<font color="#8AE234"><b> OK</b></font>
+  Applying auth.0007_alter_validators_add_error_messages...<font color="#8AE234"><b> OK</b></font>
+  Applying auth.0008_alter_user_username_max_length...<font color="#8AE234"><b> OK</b></font>
+  Applying auth.0009_alter_user_last_name_max_length...<font color="#8AE234"><b> OK</b></font>
+  Applying locations.0001_initial...<font color="#8AE234"><b> OK</b></font>
+  Applying sessions.0001_initial...<font color="#8AE234"><b> OK</b></font>
+(bookmarks_env) <font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks/bookmarks</b></font>$ ./manage.py showmigrations
+<b>admin</b>
+ [X] 0001_initial
+ [X] 0002_logentry_remove_auto_add
+<b>auth</b>
+ [X] 0001_initial
+ [X] 0002_alter_permission_name_max_length
+ [X] 0003_alter_user_email_max_length
+ [X] 0004_alter_user_username_opts
+ [X] 0005_alter_user_last_login_null
+ [X] 0006_require_contenttypes_0002
+ [X] 0007_alter_validators_add_error_messages
+ [X] 0008_alter_user_username_max_length
+ [X] 0009_alter_user_last_name_max_length
+<b>contenttypes</b>
+ [X] 0001_initial
+ [X] 0002_remove_content_type_name
+<b>locations</b>
+ [X] 0001_initial
+<b>sessions</b>
+ [X] 0001_initial
+(bookmarks_env) <font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks/bookmarks</b></font>$ ./manage.py shell
+Python 3.6.7 (default, Oct 22 2018, 11:32:17)
+[GCC 8.2.0] on linux
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+(InteractiveConsole)
+&gt;&gt;&gt; from locations.models import Bookmark, Comment
+&gt;&gt;&gt; Bookmark.objects.all()
+&lt;QuerySet [&lt;Bookmark: google.com&gt;, &lt;Bookmark: cnn.com&gt;, &lt;Bookmark: apple.com&gt;]&gt;
+&gt;&gt;&gt; Comment.objects.all()
+&lt;QuerySet [&lt;Comment: These people make the iPhone&gt;]&gt;
+&gt;&gt;&gt; Bookmark.objects.filter(link__icontains=&quot;goog&quot;)
+&lt;QuerySet [&lt;Bookmark: google.com&gt;]&gt;
+&gt;&gt;&gt; Bookmark.objects.filter(link__contains=&quot;Goog&quot;)
+&lt;QuerySet []&gt;
+&gt;&gt;&gt; Bookmark.objects.filter(link__icontains=&quot;Goog&quot;)
+&lt;QuerySet [&lt;Bookmark: google.com&gt;]&gt;
+&gt;&gt;&gt; Comment.objects.filter(bookmark__link__icontains=&quot;goog&quot;)
+&lt;QuerySet []&gt;
+&gt;&gt;&gt; Comment.objects.filter(bookmark__link__icontains=&quot;Apple&quot;)
+&lt;QuerySet [&lt;Comment: These people make the iPhone&gt;]&gt;
+&gt;&gt;&gt;
+</pre>
+</body>
+</html>

@@ -1,0 +1,55 @@
+
+    What are Migrations?
+      - Migrations are database change expressions;
+      - The database is taken from one state to another;
+      - Without migrations our Django models never create database tables;
+      - Migrations can go forward or reversed;
+      - The initial state of a database is empty, the first migration creates database structure (schema);
+      - Migrations can create/remove/alter schema;
+      - They can also add/remove data.
+
+    Creating Migrations
+      + Django makemigrations
+        * manage.py can generate schema migrations
+          - Django models are compared with current migration state and the makemigration generates
+                                                                                migrations for the difference;
+          - If no migrations exist, the difference is equal to the current Django models.
+
+
+    Migrations operations
+        './manage.py makemigrations'
+          locations/migrations/0001_initial.py
+            - Create model Bookmark
+            - Create model Comment
+
+    Data Migrations
+      - Non schema migrations must be created manually;
+      - These migrations might add? remove or alter data;
+      - manual should not generally alter structure as makemigrations would otherwise not work;
+      - These migrations can be expressed as Python code which is invoked via the RunPython migrations operations.
+
+    Applying Migrations
+      * showmigrations migrate
+        - makemigrations and manual migration operations are not applies to the database until instructed;
+        - The ./manage.py showmigrations shows what migrations have been applied in the past and migrations
+                                                                                              awaiting to be applied;
+        - The ./manage.py migrate command carries out all migrations that have not yet been applies.
+
+    Database State
+        - With our migrations, our models now exist as persistent database tables;
+        - Once populated with data, we can query this data in Django.
+
+    Database Queries
+      * Single table
+        - Bookmark.objects is manager which allows us to operate on our bookmarks table as a whole;
+        - Managers allow us to make queries;
+        - Bookmarks.objects.all() - all objects;
+        - Bookmarks.objects.filter() - selected objects;
+        - Example:
+            Bookmarks.objects.filter(link_icontains="google").
+      * Using relationships
+        - Comment.objects is also a manager which allows us to query the Comment table, but lets also make use
+                                                                     of the relationship between Comment and Bookmark:
+            Comment.objects.filter(bookmark__link__icontains = "google")
+        - We can use relationship the other way:
+            Bookmark.objects.filter(comment__text__contains = "like")
