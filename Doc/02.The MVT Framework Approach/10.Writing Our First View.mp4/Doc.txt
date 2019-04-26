@@ -1,3 +1,4 @@
+Part 1
 
     Class Based Views
       - Django provides a base class: View;
@@ -36,6 +37,47 @@
                       ),
                 ]
 
-    Accessing Our First View
+    Accessing Our First View:
 
-        http://127.0.0.1:8000/locations/hello1/ - we see a message "Hello world"
+        http://127.0.0.1:8000/locations/hello1/
+
+        And we see  in our browser "Hello world"
+
+Part 2
+
+    Url Query Parameters
+      - Urls provide mechanism to receive parameters via the query portion;
+      - Example:
+        www.mysite.com/view_location/?val1=1&val2=5 has two parameters val1 and val2 with values 1 and 5/
+
+    Our Second View
+      * Querystring parameter
+        Example:
+          Add to locations/views.py
+
+            class SimpleHelloPerson(View):
+              """
+                 View that returns Hello $person parameter
+              """
+
+              def get (self, request, *args, **kwargs):
+                  return HttpResponse('<h1>Hello {}</h1>'.format(request.GET['name']))
+
+          Add to locations/urls.py
+
+            path('hello2/', SimpleHelloPerson.as_view(), name='hello-view2'),
+
+        Accessing Our Second  View:
+
+          http://127.0.0.1:8000/locations/hello2/?name=John
+
+          And we see  in our browser "Hello John"
+
+            or
+
+          http://127.0.0.1:8000/locations/hello2/?name=Alice
+
+          And we see  in our browser "Hello Alice"
+
+
+          07:45

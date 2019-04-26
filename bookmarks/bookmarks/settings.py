@@ -78,12 +78,12 @@ WSGI_APPLICATION = 'bookmarks.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',  # 'django.db.backends.sqlite3',
-        'NAME': 'bookmarks',  # os.path.join(BASE_DIR, 'db.sqlite3'),
-        'USER': 'bookmarksuser',
-        'PASSWORD': 'mypasswordhere',
-        'HOST': 'localhost',
-        'PORT': '5432',
+         'ENGINE': 'django.db.backends.postgresql',  # 'ENGINE': 'django.db.backends.sqlite3',
+         'NAME': 'bookmarks',  # 'NAME':  os.path.join(BASE_DIR, 'db.sqlite3'),
+         'USER': 'bookmarksuser',
+         'PASSWORD': 'mypasswordhere',
+         'HOST': 'localhost',
+         'PORT': '5432',
     }
 }
 

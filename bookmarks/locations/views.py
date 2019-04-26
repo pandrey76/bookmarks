@@ -12,3 +12,12 @@ class SimpleHelloWord(View):
 
     def get(self, request, *args, **kwargs):
         return HttpResponse('<h1>Hello world</h1>')
+
+
+class SimpleHelloPerson(View):
+    """
+       View that returns Hello $person parameter
+    """
+
+    def get(self, request, *args, **kwargs):
+        return HttpResponse('<h1>Hello {}</h1>'.format(request.GET['name']))

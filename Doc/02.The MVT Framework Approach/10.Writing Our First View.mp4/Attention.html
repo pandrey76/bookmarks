@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>В результате системного сбоя отвалился PostgresSql.</h3>
+<pre>(bookmarks_env) <font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks/bookmarks</b></font>$ ./manage.py runserver
+Performing system checks...
+
+System check identified no issues (0 silenced).
+Unhandled exception in thread started by &lt;function check_errors.&lt;locals&gt;.wrapper at 0x7fd6693d5950&gt;
+Traceback (most recent call last):
+  File &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/lib/python3.6/site-packages/django/db/backends/base/base.py&quot;, line 216, in ensure_connection
+    self.connect()
+  File &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/lib/python3.6/site-packages/django/db/backends/base/base.py&quot;, line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/lib/python3.6/site-packages/django/db/backends/postgresql/base.py&quot;, line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/lib/python3.6/site-packages/psycopg2/__init__.py&quot;, line 126, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+psycopg2.OperationalError: could not connect to server: Connection refused
+	Is the server running on host &quot;localhost&quot; (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/lib/python3.6/site-packages/django/utils/autoreload.py&quot;, line 225, in wrapper
+    fn(*args, **kwargs)
+  File &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/lib/python3.6/site-packages/django/core/management/commands/runserver.py&quot;, line 123, in inner_run
+    self.check_migrations()
+  File &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/lib/python3.6/site-packages/django/core/management/base.py&quot;, line 427, in check_migrations
+    executor = MigrationExecutor(connections[DEFAULT_DB_ALIAS])
+  File &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/lib/python3.6/site-packages/django/db/migrations/executor.py&quot;, line 18, in __init__
+    self.loader = MigrationLoader(self.connection)
+  File &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/lib/python3.6/site-packages/django/db/migrations/loader.py&quot;, line 49, in __init__
+    self.build_graph()
+  File &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/lib/python3.6/site-packages/django/db/migrations/loader.py&quot;, line 207, in build_graph
+    self.applied_migrations = recorder.applied_migrations()
+  File &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/lib/python3.6/site-packages/django/db/migrations/recorder.py&quot;, line 61, in applied_migrations
+    if self.has_table():
+  File &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/lib/python3.6/site-packages/django/db/migrations/recorder.py&quot;, line 44, in has_table
+    return self.Migration._meta.db_table in self.connection.introspection.table_names(self.connection.cursor())
+  File &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/lib/python3.6/site-packages/django/db/backends/base/base.py&quot;, line 255, in cursor
+    return self._cursor()
+  File &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/lib/python3.6/site-packages/django/db/backends/base/base.py&quot;, line 232, in _cursor
+    self.ensure_connection()
+  File &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/lib/python3.6/site-packages/django/db/backends/base/base.py&quot;, line 216, in ensure_connection
+    self.connect()
+  File &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/lib/python3.6/site-packages/django/db/utils.py&quot;, line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/lib/python3.6/site-packages/django/db/backends/base/base.py&quot;, line 216, in ensure_connection
+    self.connect()
+  File &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/lib/python3.6/site-packages/django/db/backends/base/base.py&quot;, line 194, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/lib/python3.6/site-packages/django/db/backends/postgresql/base.py&quot;, line 168, in get_new_connection
+    connection = Database.connect(**conn_params)
+  File &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/lib/python3.6/site-packages/psycopg2/__init__.py&quot;, line 126, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+django.db.utils.OperationalError: could not connect to server: Connection refused
+	Is the server running on host &quot;localhost&quot; (127.0.0.1) and accepting
+	TCP/IP connections on port 5432?
+
+    <h3>Пришлост перезапустить сервис PostgresSql</h3>
+<font color="#CC0000"><b>Нажал 'Ctrl + Z'</b></font>
+^Z
+[2]+  Остановлен    ./manage.py runserver
+(bookmarks_env) <font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks/bookmarks</b></font>$ deactivate
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks/bookmarks</b></font>$ sudo systemctl start postgresql
+[sudo] пароль для admin1:
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks/bookmarks</b></font>$ sudo systemctl enable postgresql
+Synchronizing state of postgresql.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable postgresql
+<h3>После всё заработало</h3>
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks/bookmarks</b></font>$ . ../bookmarks_env/bin/activate
+(bookmarks_env) <font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks/bookmarks</b></font>$ ./manage.py runserver
+Performing system checks...
+
+System check identified no issues (0 silenced).
+April 26, 2019 - 11:24:26
+Django version 2.0.13, using settings &apos;bookmarks.settings&apos;
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+[26/Apr/2019 11:38:31] &quot;GET /locations/hello1/ HTTP/1.1&quot; 200 20
+</pre>
+</body>
+</html>
