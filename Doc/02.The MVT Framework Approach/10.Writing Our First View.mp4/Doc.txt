@@ -1,0 +1,41 @@
+
+    Class Based Views
+      - Django provides a base class: View;
+      - A subclass of View that provides a method such as get() can used as a Django View;
+      - Request data is provided in the request parameter, *arg and **kwarg contain parameters configured in the url;
+      - The handler method should return a HttpResponse.
+
+    Our First View
+      * View;
+      * HttpResponse.
+
+       Example:
+          class SimpleHelloWord(View):
+              """
+                  View that returns Hello World
+              """
+
+              def get (self, request, *args, **kwargs):
+                  return HttpResponse('<h1>Hello world</h1>')
+
+    Urls
+      * Making our first View accessible
+
+        bookmark/urls.py
+        urlpatterns = [
+                  path('locations/',
+                  include('locations.urls')),
+                ]
+
+        locations/urls.py
+        urlpatterns = [
+                  path(
+                       'hello1/',
+                       SimpleHelloWord.as_view(),
+                       name = 'hello-view1'
+                      ),
+                ]
+
+    Accessing Our First View
+
+        http://127.0.0.1:8000/locations/hello1/ - we see a message "Hello world"

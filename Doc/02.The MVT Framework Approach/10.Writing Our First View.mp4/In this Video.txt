@@ -1,0 +1,6 @@
+
+    In this Video, we are going to take a look at...
+      - Simple Hello world View;
+      - Django class based view;
+      - URL configuration;
+      - Hello person View with parameter.
