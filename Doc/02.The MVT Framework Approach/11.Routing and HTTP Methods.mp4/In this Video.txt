@@ -1,0 +1,6 @@
+
+    In this Video, we are going to take a look at...
+      - How Django handles request;
+      - Url routing;
+      - Writing path and re_path matching;
+      - HTTP methods.

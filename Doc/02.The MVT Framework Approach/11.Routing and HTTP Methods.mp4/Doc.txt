@@ -1,0 +1,68 @@
+
+    Requests
+      * How Django handles the request/response cycle?
+
+            Request in
+                |
+            Middleware
+                |
+             View (Url config)
+                |
+            Middleware
+                |
+            Response out
+
+    Middleware
+      * Functionality applying to each request and response;
+
+      * Examples:
+          Sessions, Authentication, Cross Site Request Forgery Protection, Handling unhandled errors (for example: 404,
+          500), View Caching, Internationalization.
+
+      * Is a layered structure like an onion, each middleware can:
+        - Modify the request;
+        - Pass the request to the next layer;
+        - Modify the response from the next layer;
+        - Generate a response without calling the next layer.
+
+    Url Configuration
+      - Matching a url to View;
+      - Project includes other urls matching a base path;
+      - Apps define a list of urlpatterns containing path() or re_path().
+
+    Url path
+      * path('bookmark/<int:id>/', views.Bookmark.as_view(), name = 'bookmark-view')
+
+        - First argument provides a url which can be matched? example full path match '/locations/bookmark/5/';
+        - Second argument identifies the View that will process the request;
+        - Third argument names the View;
+        - We can refer to this name rather than hardcoding the url path.
+
+    Url re_path
+      * re_path('bookmark/(?P<id>[0-9]+)/', view.Bookmark.as_view(), name='bookmark-view');
+
+        - re_path() allows use of regular expressions in the first argument;
+        - Regular expressions permit more complex matching use case;
+        - The remaining arguments are the same as path.
+
+    Regular Expressions
+      * Regular expressions can be complex, but allow greater flexibility than what is provided by path();
+      * Further information:
+       - HTTPs://doc.djangoproject.com/en/2.0/topics/HTTP/urls/;
+       - HTTPs://regexr.com/
+
+    HTTP Method
+      - HTTP requests can use different methods;
+      - These are also called verbs;
+      - Typing an url into a web browser makes a GET request;
+      - Many HTTP requests are GET requests;
+      - GET requests are not useful for large data submissions such as submitting a form or uploading a file;
+      - HTTP provides the POST method for purpose.
+
+    Using HTTP Method with View
+      * The View class allows us to handle HTTP methods by defining methods;
+      * get(request, *arg, **kwarg) for HTTP GET requests;
+        - querystring parameters in request.GET, kwarg provides url parameters.
+      * post(request, *arg, **kwarg) for HTTP POST requests;
+        - No querystring available for POST, kwargs still provides url parameters;
+        - request.POST contains form submission data.
