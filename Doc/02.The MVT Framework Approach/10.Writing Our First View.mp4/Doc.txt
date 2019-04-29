@@ -79,5 +79,40 @@ Part 2
 
           And we see  in our browser "Hello Alice"
 
+    Url kwarg Parameters
+     - Django provides an alternative mechanism for parameters from urls taken from the path;
+     - Components of the path can form parameters;
+     - Example:
+        www.mysite.com/my_view/5/7/fred/ with url configuration path:
+           path('/my_view/<int:val1>/<int:val2>/<str:name>', views.year_archive);
+     - Provides three kwarg parameters val1, val2, name with values 5, 7, "fred".
 
-          07:45
+     Our Third View
+       * kwarg parameter
+         class SimpleHelloPersonVersion2(View):
+             """
+               View that return Hello $person parameter
+             """
+             def get(self, request, *args, **kwargs):
+                 return HttpResponse('<h1>Hello {}</h1>'.format(kwargs['name']))
+
+       Accessing Our Third  View:
+
+         http://127.0.0.1:8000/locations/hello3/Fred/
+
+          And we see  in our browser "Hello Fred"
+
+            or
+
+          http://127.0.0.1:8000/locations/hello3/Alice/
+
+          And we see  in our browser "Hello Alice"
+
+
+     Url kwarg Parameters
+       * Most Django developers prefer Url kwarg parameters:
+         - Cleaner urls, easier bookmarking, greater control through url configuration;
+         - Optional parameters can be accepted through additional url path() configs;
+         - Can de used for both get and post requests;
+       * Querystring:
+         - Useful for more complicated optional parameter scenarios to avoid complicated url configuration.

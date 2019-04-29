@@ -21,3 +21,11 @@ class SimpleHelloPerson(View):
 
     def get(self, request, *args, **kwargs):
         return HttpResponse('<h1>Hello {}</h1>'.format(request.GET['name']))
+
+
+class SimpleHelloPersonVersion2(View):
+    """
+        View that return Hello $person parameter (version #2)
+    """
+    def get(self, request, *args, **kwargs):
+        return HttpResponse('<h1>Hello {}</h1>'.format(kwargs['name']))
