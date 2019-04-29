@@ -29,3 +29,15 @@ class SimpleHelloPersonVersion2(View):
     """
     def get(self, request, *args, **kwargs):
         return HttpResponse('<h1>Hello {}</h1>'.format(kwargs['name']))
+
+
+class TemplateHelloPerson(TemplateView):
+    """
+        View that uses template to return Hello $person parameter
+    """
+    template_name = 'locations/hello.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['name'] = self.kwargs['name']
+        return context

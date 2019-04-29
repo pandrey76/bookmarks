@@ -1,0 +1,58 @@
+
+    Why Templates?
+      * Remember our third view?
+        class SimpleHelloPersonVersion2(View):
+             """
+               View that return Hello $person parameter
+             """
+             def get(self, request, *args, **kwargs):
+                 return HttpResponse('<h1>Hello {}</h1>'.format(kwargs['name']))
+
+    What's Wrong?
+      * Our HTML is hardcoded directly in View;
+      * We combine presentation with data handling logic;
+      * We are combining the VC of MVC when these concerns should be separate;
+      * Our python developers have to also understand HTML;
+      * The HTML response is insufficient;
+      * It does not provide a full HTML document including HTML version, <head>, <body> tags.
+
+    Introducing TemplateView
+      * Django provides us a View that preconfigured to render a HttpResponse from a template;
+      * Note that we do not need to provide a get() method
+          class TemplateHelloPerson(TemplateView):
+              """
+                  View that uses template to return Hello $person parameter
+              """
+              template_name = 'locations/hello.html'
+              def get_context_data(self, **kwargs):
+                  context = super().get_context_data(**kwargs)
+                  context['name'] = self.kwargs['name']
+                  return context
+
+    Defining Our Base Template
+      * The overall structure of a HTML document is not going to change for each request;
+      * We can have a base template provide this skeleton structure, and our individual templates can then
+                                                                                                  flesh out the detail;
+
+    Defining Our View Template
+      * Our view template can focus on two aspects of the response, the document title and the content;
+      * Both the title and the content need to make use of the 'name' parameter;
+      * Note that we could have called it something else other than 'name':
+         context['xyz'] = self.kwargs['name'] would mean we use 'xyz' in our template.
+
+
+    Template Discovery
+
+        Accessing Our Forth  View:
+
+         http://127.0.0.1:8000/locations/hello4/Fred/
+
+          And we see  in our browser "Hello Fred" in green background.
+
+            or
+
+         http://127.0.0.1:8000/locations/hello4/Alice/
+
+          And we see  in our browser "Hello Alice" in green background.
+
+            12:00

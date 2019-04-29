@@ -1,0 +1,7 @@
+
+    In this Video, we are going to take a look at...
+      - Django templates and TemplateView;
+      - Base templates and template inheritance;
+      - Passing data to templates;
+      - Where to place templates;
+      - Templates tags and filters.
