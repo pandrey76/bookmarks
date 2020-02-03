@@ -56,3 +56,16 @@
           And we see  in our browser "Hello Alice" in green background.
 
             12:00
+
+    Template Tags and Filters
+
+        * Templates are not the place for core "logic" the view is the place for that,
+          however sometimes we need to manipulate or vary access tp data in the template;
+        * Template tags and filters allow us do this;
+            - We will modify our template to include ", you're a winner" after the name if the name is "Fred";
+            - A {%if%} tag will permit this;
+            - We will append the length of the name using the length filter.
+        * You may have noticed that we are already using tags {%extends%} and {%block%} to extend our base template.
+
+    Template Tags and Filters
+
