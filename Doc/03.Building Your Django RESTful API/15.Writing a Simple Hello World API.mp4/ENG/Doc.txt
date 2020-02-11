@@ -1,0 +1,21 @@
+
+    Creating an Endpoint
+
+    JSON Output
+
+    Input and Validation
+
+    Result
+
+
+        http://127.0.0.1:8000/locations/hello_api/Fred/ -
+
+                                                            description	"This demonstrates an error"
+                                                            error	"Fred is not an authorised user"
+                                                            403
+
+        http://127.0.0.1:8000/locations/hello_api/Pol/
+
+                                                            description	"This endpoint welcomes the user"
+                                                            welcome	"Hello Pol"
+                                                            200

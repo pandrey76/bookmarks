@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.views.generic import View, TemplateView
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
+from rest_framework.views import APIView
+
 
 # Create your views here.
 
@@ -41,3 +43,29 @@ class TemplateHelloPerson(TemplateView):
         context = super().get_context_data(**kwargs)
         context['name'] = self.kwargs['name']
         return context
+
+
+class SimpleHelloWorldAPI(View):
+    """
+    View that returns a name parameter in a JSON response
+    """
+
+    def get(self, request, *args, **kwargs):
+        if kwargs['name'].lower() != 'fred':
+            return JsonResponse(
+                {
+                    'description': 'This endpoint welcomes the user',
+                    'welcome': 'Hello {}'.format(kwargs['name'])
+                },
+                status=200
+            )
+        else:
+            return JsonResponse(
+                {
+                    'description': 'This demonstrates an error',
+                    'error': '{} is not an authorised user'.format(
+                        kwargs['name']
+                    )
+                },
+                status=403
+            )

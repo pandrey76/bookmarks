@@ -1,0 +1,6 @@
+
+    In this Video? we are going to take a look at...
+
+        * Creating an API endpoint using Django's URLConf;
+        * Creating JSON output and setting HTTP status codes;
+        * Accepting input and changing output based on validations results.
