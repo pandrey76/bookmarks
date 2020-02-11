@@ -1,0 +1,63 @@
+
+    Why Test?
+
+        * Large applications are difficult to test manually;
+        * We need to know if working code is broken by code changes (regressions);
+        * We gain assurance that our code works as expected by putting it through a range of scenarios.
+
+    Django Test Environment
+
+        * ./manage.py (or python manage.py) provides test environment based on Python unit test;
+        * Python modules starting with test:
+            - Classes inheriting from unit test. TestCase or Django test classes;
+            - Methods of these classes starting with test_.
+
+    Postgres
+
+        * Django's test runner uses a test database;
+        * Existing database is not impacted or changed by tests;
+        * All existing migrations are applied to a new test database and this is reset between test cases and
+          deleted at the end;
+        * Our Postgres user must have permission to create databases.
+
+    Configuring Postgres
+
+        admin1@ubuntu18:~$ cd "/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/bin/"
+        admin1@ubuntu18:~/Programming/WEB/Backends/bookmarks/bookmarks_env/bin$ . activate
+        (bookmarks_env) admin1@ubuntu18:~/Programming/WEB/Backends/bookmarks/bookmarks_env/bin$ cd ../
+        (bookmarks_env) admin1@ubuntu18:~/Programming/WEB/Backends/bookmarks/bookmarks_env$ cd ../
+        (bookmarks_env) admin1@ubuntu18:~/Programming/WEB/Backends/bookmarks$ sudo su postgres
+        [sudo] пароль для admin1:
+        postgres@ubuntu18:/home/admin1/Programming/WEB/Backends/bookmarks$ cd /
+        postgres@ubuntu18:/$ psql
+        psql (12.1 (Ubuntu 12.1-1.pgdg18.04+1), сервер 10.11 (Ubuntu 10.11-1.pgdg18.04+1))
+        Введите "help", чтобы получить справку.
+
+        postgres=# ALTER USER bookmarksuser CREATEDB;
+        ALTER ROLE
+        postgres=# \q
+        postgres@ubuntu18:/$ exit
+        exit
+        (bookmarks_env) admin1@ubuntu18:~/Programming/WEB/Backends/bookmarks$
+
+    Our First Test - Integration Test
+
+        * Use django.test.SimpleTestCase;
+            - Can use this for tests that do not alter the database.
+        * Django test case classes provide self.client() a browser simulation;
+            - get() and post() methods to simulate get and post request and responses.
+        * We will simulate a get request to our TemplateHelloPerson View and test the response.
+
+    Unit Testing
+
+        * self.client() tests the whole view - in through middleware, url resolution and then out through middleware;
+        * Unit testing - we want to be able to test each method in our view class individually.
+
+    Unit Testing Setup
+
+        * Django creates view objects as part of serving request;
+        * We will fake this using a helper function setup_view_test in our test class setUp() method;
+        * The result will be available as self.view;
+        * We can then call class methods - such as get_context_data() using this attribute;
+        * We can also test other aspects of the View class, such as attributes.
+

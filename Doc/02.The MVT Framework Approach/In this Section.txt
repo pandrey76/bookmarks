@@ -6,3 +6,14 @@
             - View, routing, and HTTP methods;
             - Django templates;
             - Testing.
+
+
+        Summary
+
+            * Explained:
+                - MVC and Django MVT approaches;
+                - Models and database tables;
+                - Migrations and database queries;
+                - View, URL configuration, and middleware;
+                - Templates;
+                - Testing.

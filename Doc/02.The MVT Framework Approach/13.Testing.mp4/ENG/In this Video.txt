@@ -1,0 +1,8 @@
+
+    in this Video, we are going to take a look at...
+
+        * Why test;
+        * Django test environment and test runner;
+        * Configuring Postgres for testing;
+        * Integration testing using Django test client;
+        * Unit testing.

@@ -1,0 +1,67 @@
+
+
+<pre><font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~</b></font>$ cd &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/bin/&quot;
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks/bookmarks_env/bin</b></font>$ cd ../
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks/bookmarks_env</b></font>$ . bin/activate
+(bookmarks_env) <font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks/bookmarks_env</b></font>$ sudo su postgres
+[sudo] пароль для admin1:
+postgres@ubuntu18:/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env$ cd /
+postgres@ubuntu18:/$
+postgres@ubuntu18:/$ psql
+psql (12.1 (Ubuntu 12.1-1.pgdg18.04+1), сервер 10.11 (Ubuntu 10.11-1.pgdg18.04+1))
+Введите &quot;help&quot;, чтобы получить справку.
+postgres=# ALTER USER bookmarksuser CREATEDB;
+ALTER ROLE
+postgres=# \q
+postgres@ubuntu18:/$ exit
+exit
+(bookmarks_env) <font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks</b></font>$>
+(bookmarks_env) <font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks</b></font>$ cd bookmarks
+(bookmarks_env) <font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks/bookmarks</b></font>$ ./manage.py test
+Creating test database for alias &apos;default&apos;...
+System check identified no issues (0 silenced).
+F
+======================================================================
+FAIL: test_render (locations.tests.ITTest_TemplateHelloPerson)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks/locations/tests.py&quot;, line 23, in test_render
+    self.assertContains(response, b&apos;&lt;title&gt;Hello Allan&lt;/title&gt;&apos;)
+  File &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/lib/python3.6/site-packages/django/test/testcases.py&quot;, line 369, in assertContains
+    self.assertTrue(real_count != 0, msg_prefix + &quot;Couldn&apos;t find %s in response&quot; % text_repr)
+AssertionError: False is not true : Couldn&apos;t find b&apos;&lt;title&gt;Hello Allan&lt;/title&gt;&apos; in response
+
+----------------------------------------------------------------------
+Ran 1 test in 0.010s
+
+FAILED (failures=1)
+Destroying test database for alias &apos;default&apos;...
+
+(bookmarks_env) <font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks/bookmarks</b></font>$ ./manage.py test locations.tests.UTTest_TemplateHelloPerson
+Traceback (most recent call last):
+  File &quot;./manage.py&quot;, line 15, in &lt;module&gt;
+    execute_from_command_line(sys.argv)
+  File &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/lib/python3.6/site-packages/django/core/management/__init__.py&quot;, line 371, in execute_from_command_line
+    utility.execute()
+  File &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/lib/python3.6/site-packages/django/core/management/__init__.py&quot;, line 365, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/lib/python3.6/site-packages/django/core/management/commands/test.py&quot;, line 26, in run_from_argv
+    super().run_from_argv(argv)
+  File &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/lib/python3.6/site-packages/django/core/management/base.py&quot;, line 288, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/lib/python3.6/site-packages/django/core/management/base.py&quot;, line 335, in execute
+    output = self.handle(*args, **options)
+  File &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/lib/python3.6/site-packages/django/core/management/commands/test.py&quot;, line 59, in handle
+    failures = test_runner.run_tests(test_labels)
+  File &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/lib/python3.6/site-packages/django/test/runner.py&quot;, line 600, in run_tests
+    suite = self.build_suite(test_labels, extra_tests)
+  File &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/lib/python3.6/site-packages/django/test/runner.py&quot;, line 486, in build_suite
+    tests = self.test_loader.loadTestsFromName(label)
+  File &quot;/usr/lib/python3.6/unittest/loader.py&quot;, line 153, in loadTestsFromName
+    module = __import__(module_name)
+  File &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks/locations/tests.py&quot;, line 31
+    class UTTest_TemplateHelloPerson(SimpleTestCase):
+        ^
+IndentationError: expected an indented block
+(bookmarks_env) <font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks/bookmarks</b></font>$
+</pre>
