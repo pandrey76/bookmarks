@@ -1,0 +1,7 @@
+
+    In this Video? we are going to take a look at...
+
+        * Why use the Django REST Framework (DRF);
+        * Key parts of the DRF;
+        * Who uses the DRF;
+        * Web browsable API.

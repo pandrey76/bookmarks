@@ -1,0 +1,52 @@
+
+
+        Why Use the Django REST Framework?
+            * To save a large headache of writing extensive code that would provide standardized functionality;
+            * Serialization of models and other data sources;
+            * Simple validation of data against existing data schemas;
+            * Authentication;
+            * DRF provides a web browsable interface.
+
+
+        Key Parts of the DRF
+            * Serializers
+                - Model serializers;
+                - Hyperlinks and relationships.
+
+            * Views
+                - Generic views;
+                - Viewsets.
+
+            * Routerss;
+            * Authentication /permissioning.
+
+
+        Serializers
+            * Convert an object(or collection of objects) into a dictionary like form;
+            * Can do this manually or in the case of models, use the structure of the models themselves for
+              serialization structure;
+            * Can validate input before executing CRUD operations.
+
+        Views and Viewsets
+            * Provide the glue that handles a request and response to the client and the serializer;
+            * A viewset is a series of views to handle the various types of HTTP methods for a resource;
+            * The viewset can map this CRUD operations.
+
+        Routing
+            * Routers provide a standardised way of mapping resources (using URLs) to the views or the viewset that
+              provides CRUD operation service on those resources.
+
+        Who Uses the DRF?
+            * Many people;
+            * The DRF dominates both Google Searches and internet discussion of Django API frameworks;
+            * Many companies have put on record their financial support for the DRF;
+                - Rover.com, Sentry, Stream, Machinalis, Rollbar and Cadre.
+
+        Web Browseable API
+            * The DRF gives us a web browsable interface to our APIs out of the box;
+            * Allows us to see the practical structure of our API;
+            * Does our resource definitions make sense;
+            * Do the relationships in the API that provide make sense;
+            * Allows us to visually test the API.
+
+        API in the Browser
