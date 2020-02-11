@@ -13,17 +13,17 @@ from .views import TemplateHelloPerson
 
 class ITTest_TemplateHelloPerson(SimpleTestCase):
 
-    # @tag('integration_test')
-    # def test_render(self):
-    #     response = self.client.get(
-    #         reverse('hello-view4', kwargs={'name': 'Allan'}), follow=True
-    #     )
-    #     self.assertEqual(response.status_code, 200)
-    #     self.assertEqual(response.resolver_match.url_name, 'hello-view4')
-    #     # print(response )
-    #     self.assertContains(response, b'<title>Hello Allan</title>')
-    #     self.assertContains(response, b'<p>There are 5 characters in your name</p>')
-    #     self.assertContains(response, b'you have not won')
+    @tag('integration_test')
+    def test_render(self):
+        response = self.client.get(
+            reverse('hello-view4', kwargs={'name': 'Allan'}), follow=True
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.resolver_match.url_name, 'hello-view4')
+        # print(response )
+        self.assertContains(response, b'<title>Hello Allan</title>')
+        self.assertContains(response, b'<p>There are 5 characters in your name</p>')
+        self.assertContains(response, b'you have not won')
 
 
 # Unit Testing
