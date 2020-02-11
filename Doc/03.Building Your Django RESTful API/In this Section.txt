@@ -1,0 +1,9 @@
+
+
+    In this Section, we are going to take a look at...
+
+        * What are REST APIs;
+        * Creating APIs directly and with the Django REST framework;
+        * Working with serialized models;
+        * Views and routing;
+        * Testing.

@@ -1,0 +1,46 @@
+
+    Exploring RESTful APIs
+
+        * Why APIs?;
+            - The web was initially created for people who used web browser;
+            - Page requests would be made by a person who would see the result on a screen;
+            - Much internet traffic is now computer to computer (or even to the same computer);
+            - Screen presentation is then not important;
+            - APIs facilitate this communication by focusing only on data.
+
+        * What is REST;
+            - REST(Representational State Transfer) is an API;
+            - REST uses web technology first built for human to server communications to deliver API capability.
+
+        * Resources;
+            - A REST resource is anything that can be addressed;
+            - REST uses URLS (Universal Resource Locators) as the address mechanism;
+            - We have seen URLs before in Django for traditional web applications in the URLconfig.
+
+        * HTTP methods and CRUD operations;
+            - In section 2, we introduce GET and POST;
+            - These are HTTP methods;
+            - Think of them as a types of HTTP message;
+            - HTTP has other methods (types) including PUT and DELETE;
+            - REST uses these methods for its API operations.
+
+            CRUD Operations
+                - Once a REST message is received by a server, something is expected to happen;
+                - This something is an operation;
+                - There are four main types of operations - Create, Read, Update and Delete (CRUD for short).
+
+            Resources, Methods, and CRUD Operations
+                - Resources, HTTP methods, and CRUD operations work together;
+                - A HTTP request is made;
+                - It uses a URL to identify a resource;
+                - The HTTP method is used to identify what operation (Create, Read, Update, Delete) on that resource.
+
+        * Status codes.
+            - Once an operation is complete, REST communicates a result back to requesting device - which is
+              listening for this response;
+            - Status codes are numeric;
+            - Examples:
+                -- 200 OK (request was processed);
+                -- 403 Forbidden (for example, no permission);
+                -- 404 Resource not found;
+                -- 500 Server error.

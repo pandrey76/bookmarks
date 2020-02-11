@@ -1,0 +1,8 @@
+
+    In this Video? we are going to take a look at...
+
+        * Why APIs;
+        * What is REST;
+        * Resources;
+        * HTTP methods and CRUD operations;
+        * Status codes.
