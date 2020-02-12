@@ -1,0 +1,6 @@
+
+    In this Video? we are going to take a look at...
+
+        * Building a Bookmarks list view and URL configuration;
+        * Building a Bookmarks detail view and URL configuration;
+        * Seeing our API with the DRF in action.

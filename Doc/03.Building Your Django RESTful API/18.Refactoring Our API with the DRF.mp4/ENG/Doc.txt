@@ -1,0 +1,270 @@
+
+
+        Bookmarks List View
+
+        Bookmarks Detail View
+
+        Seeing Our API in Action
+
+
+        http://127.0.0.1:8000/locations/bookmarks_trade_view/
+
+        /////////////////////////////////////////////////////////////
+
+        http://127.0.0.1:8000/locations/bookmarks_trade_view/
+
+        GET /locations/bookmarks_trade_view/
+
+        HTTP 200 OK
+        Allow: GET, POST, HEAD, OPTIONS
+        Content-Type: application/json
+        Vary: Accept
+
+        [
+            {
+                "id": 1,
+                "link": "google.com"
+            },
+            {
+                "id": 2,
+                "link": "cnn.com"
+            },
+            {
+                "id": 3,
+                "link": "apple.com"
+            },
+            {
+                "id": 4,
+                "link": "http://www.google.com/"
+            },
+            {
+                "id": 5,
+                "link": "http://www.cnn.com/"
+            },
+            {
+                "id": 6,
+                "link": "http://www.bbc.co.uk/"
+            },
+            {
+                "id": 7,
+                "link": "http://www.bbc.co.uk/"
+            }
+        ]
+        /////////////////////////////////////////////////////////////
+
+
+        /////////////////////////////////////////////////////////////
+        Enter:
+            Content: {"abc": "123"}
+        Pushing "POST"
+
+
+        POST /locations/bookmarks_trade_view/
+
+        HTTP 400 Bad Request
+        Allow: GET, POST, HEAD, OPTIONS
+        Content-Type: application/json
+        Vary: Accept
+
+        {
+            "link": [
+                "This field is required."
+                ]
+        }
+        /////////////////////////////////////////////////////////////
+
+        /////////////////////////////////////////////////////////////
+        Enter:
+
+        Enter:
+            Content: {"link": "not valid"}
+        Pushing "POST"
+
+
+        POST /locations/bookmarks_trade_view/
+
+        HTTP 400 Bad Request
+        Allow: GET, POST, HEAD, OPTIONS
+        Content-Type: application/json
+        Vary: Accept
+
+        {
+            "link": [
+                "Enter a valid URL."
+            ]
+        }
+        /////////////////////////////////////////////////////////////
+
+        /////////////////////////////////////////////////////////////
+
+        Enter:
+            Content: {"link": "http://packt.com"}
+        Pushing "POST"
+
+
+        POST /locations/bookmarks_trade_view/
+
+        HTTP 201 Created
+        Allow: GET, POST, HEAD, OPTIONS
+        Content-Type: application/json
+        Vary: Accept
+
+        {
+            "id": 8,
+            "link": "http://packt.com"
+        }
+
+
+        /////////////////////////////////////////////////////////////
+
+
+        /////////////////////////////////////////////////////////////
+
+        http://127.0.0.1:8000/locations/bookmarks_trade_view/
+
+        GET /locations/bookmarks_trade_view/
+
+        HTTP 200 OK
+        Allow: GET, POST, HEAD, OPTIONS
+        Content-Type: application/json
+        Vary: Accept
+
+        [
+            {
+                "id": 1,
+                "link": "google.com"
+            },
+            {
+                "id": 2,
+                "link": "cnn.com"
+            },
+            {
+                "id": 3,
+                "link": "apple.com"
+            },
+            {
+                "id": 4,
+                "link": "http://www.google.com/"
+            },
+            {
+                "id": 5,
+                "link": "http://www.cnn.com/"
+            },
+            {
+                "id": 6,
+                "link": "http://www.bbc.co.uk/"
+            },
+            {
+                "id": 7,
+                "link": "http://www.bbc.co.uk/"
+            },
+            {
+                "id": 8,
+                "link": "http://packt.com"
+            }
+        ]
+        /////////////////////////////////////////////////////////////
+
+        /////////////////////////////////////////////////////////////
+
+        http://127.0.0.1:8000/locations/bookmarks_trade_view/8/
+
+        GET /locations/bookmarks_trade_view/8/
+
+        HTTP 200 OK
+        Allow: GET, PUT, DELETE, HEAD, OPTIONS
+        Content-Type: application/json
+        Vary: Accept
+
+        {
+            "id": 8,
+            "link": "http://packt.com"
+        }
+
+        /////////////////////////////////////////////////////////////
+
+        /////////////////////////////////////////////////////////////
+
+        http://127.0.0.1:8000/locations/bookmarks_trade_view/8/
+
+        Let's try tu UPDATE
+
+         Enter:
+            Content: {"link": "https://packt.com"}
+        Pushing "POST"
+
+
+        Retrive, update or delete a bookmark.
+
+        PUT /locations/bookmarks_trade_view/8/
+
+        HTTP 200 OK
+        Allow: GET, PUT, DELETE, HEAD, OPTIONS
+        Content-Type: application/json
+        Vary: Accept
+
+        {
+            "id": 8,
+            "link": "https://packt.com"
+        }
+        /////////////////////////////////////////////////////////////
+
+       /////////////////////////////////////////////////////////////
+
+            Bookmark List \ Bookmark Detail
+
+            Bookmark Detail
+
+            Retrive, update or delete a bookmark.
+
+            GET /locations/bookmarks_trade_view/8/
+
+            HTTP 200 OK
+            Allow: GET, PUT, DELETE, HEAD, OPTIONS
+            Content-Type: application/json
+            Vary: Accept
+
+            {
+                "id": 8,
+                "link": "https://packt.com"
+            }
+
+            Pushing "DELETE"
+
+            Are you sure you want to delete this Bookmark Detail?
+
+            Pushing "Delete"
+
+            Bookmark Detail
+
+            Retrive, update or delete a bookmark.
+
+            DELETE /locations/bookmarks_trade_view/8/
+
+            HTTP 204 No Content
+            Allow: GET, PUT, DELETE, HEAD, OPTIONS
+            Content-Type: application/json
+            Vary: Accept
+
+            /////////////////////////////////////////////////////////////
+
+       /////////////////////////////////////////////////////////////
+
+        http://127.0.0.1:8000/locations/bookmarks_trade_view/8/
+
+        Bookmark Detail
+
+        Retrive, update or delete a bookmark.
+
+        GET /locations/bookmarks_trade_view/8/
+
+        HTTP 404 Not Found
+        Allow: GET, PUT, DELETE, HEAD, OPTIONS
+        Content-Type: application/json
+        Vary: Accept
+
+        {
+            "detail": "Not found."
+        }
+
+       /////////////////////////////////////////////////////////////
