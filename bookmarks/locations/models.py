@@ -41,3 +41,39 @@ class Comment(Model):
 
     def link_str(self):
         return 'This comment: {} is for link: {}'.format(self.text, self.bookmark.link)
+
+
+class Note(Model):
+    """
+
+    """
+    bookmark = ForeignKey(Bookmark, on_delete=models.CASCADE, related_name='notes')
+    time = DateTimeField(auto_now_add=True, null=False, blank=True)
+    text = TextField()
+
+    def __str__(self):
+        return self.text
+
+
+class Like(Model):
+    """
+
+    """
+    bookmark = ForeignKey(
+        Bookmark, on_delete=models.CASCADE, related_name='likes', null=True
+    )
+    comment = ForeignKey(
+        Comment, on_delete=models.CASCADE, related_name='likes', null=True
+    )
+
+    def clean(self):
+        super().clean(self)
+        if self.bookmark is None:
+            if self.comment is None:
+                raise IntegrityError(
+                    'A like must be made to either a bookmark or comment'
+                )
+            elif self.comment is not None:
+                raise IntegrityError(
+                    'A like cannot be made to both a bookmark and a comment'
+                )

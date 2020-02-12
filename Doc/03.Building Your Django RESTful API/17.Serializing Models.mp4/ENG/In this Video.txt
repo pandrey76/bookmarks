@@ -1,0 +1,5 @@
+
+    In this Video? we are going to take a look at...
+
+        * Building a manual DRF serializer;
+        * Working with ModelSerializer.

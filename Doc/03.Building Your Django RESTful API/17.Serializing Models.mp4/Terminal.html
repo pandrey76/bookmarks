@@ -1,0 +1,84 @@
+
+<pre><font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~</b></font>$ cd &quot;/home/admin1/Programming/WEB/Backends/bookmarks/bookmarks_env/bin/&quot;
+<font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks/bookmarks_env/bin</b></font>$ . activate
+(bookmarks_env) <font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks/bookmarks_env/bin</b></font>$ cd ../
+(bookmarks_env) <font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks/bookmarks_env</b></font>$ cd ../
+(bookmarks_env) <font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks</b></font>$ ls
+<font color="#729FCF"><b>bookmarks</b></font>  <font color="#729FCF"><b>bookmarks_env</b></font>  <font color="#729FCF"><b>Doc</b></font>
+(bookmarks_env) <font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks</b></font>$ cd bookmarks
+(bookmarks_env) <font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks/bookmarks</b></font>$ ls
+<font color="#729FCF"><b>bookmarks</b></font>  <font color="#729FCF"><b>locations</b></font>  <font color="#8AE234"><b>manage.py</b></font>  <font color="#729FCF"><b>static</b></font>  <font color="#729FCF"><b>templates</b></font>
+(bookmarks_env) <font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks/bookmarks</b></font>$ ./manage.py makemigrations
+<font color="#34E2E2"><b>Migrations for &apos;locations&apos;:</b></font>
+  <b>locations/migrations/0002_like_note.py</b>
+    - Create model Like
+    - Create model Note
+(bookmarks_env) <font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks/bookmarks</b></font>$ ./manage.py migrate
+<font color="#34E2E2"><b>Operations to perform:</b></font>
+<b>  Apply all migrations: </b>admin, auth, contenttypes, locations, sessions
+<font color="#34E2E2"><b>Running migrations:</b></font>
+  Applying locations.0002_like_note...<font color="#8AE234"><b> OK</b></font>
+(bookmarks_env) <font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks/bookmarks</b></font>$ ./manage.py shell
+Python 3.6.7 (default, Oct 22 2018, 11:32:17)
+[GCC 8.2.0] on linux
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+(InteractiveConsole)
+&gt;&gt;&gt; from locations.models import Bookmark
+&gt;&gt;&gt; from locations.serializers import BookmarkManualSerializer
+&gt;&gt;&gt; from rest_framework.renderers import JSONRenderer
+&gt;&gt;&gt; from rest_framework.parsers import JSONParser
+&gt;&gt;&gt; Bookmark.objects.all().count()
+3
+&gt;&gt;&gt; bookmark = Bookmark(link=&quot;http://www.google.com/&quot;)
+&gt;&gt;&gt; bookmark.save()
+&gt;&gt;&gt; Bookmark.objects.all().count()
+4
+&gt;&gt;&gt; bookmark = Bookmark(link=&quot;http://www.cnn.com/&quot;)
+&gt;&gt;&gt; bookmark.save()
+&gt;&gt;&gt; bookmark = Bookmark(link=&quot;http://www.bbc.co.uk/&quot;)
+&gt;&gt;&gt; bookmark.save()
+&gt;&gt;&gt; serializer = BookmarkManualSerializer(bookmark)
+&gt;&gt;&gt; serializer.data
+{&apos;id&apos;: 6, &apos;link&apos;: &apos;http://www.bbc.co.uk/&apos;}
+&gt;&gt;&gt; content = JSONRenderer().render(serializer.data)
+&gt;&gt;&gt; content
+b&apos;{&quot;id&quot;:6,&quot;link&quot;:&quot;http://www.bbc.co.uk/&quot;}&apos;
+&gt;&gt;&gt; from django.utils.six import BytesIO
+&gt;&gt;&gt; stream = BytesIO(content)
+&gt;&gt;&gt; stream
+&lt;_io.BytesIO object at 0x7f2fa43d5eb8&gt;
+&gt;&gt;&gt; data = JSONParser().parse(stream)
+&gt;&gt;&gt; data
+{&apos;id&apos;: 6, &apos;link&apos;: &apos;http://www.bbc.co.uk/&apos;}
+&gt;&gt;&gt; serializer2 = BookmarkManualSerializer(data=data)
+&gt;&gt;&gt; serializer2.is_valid()
+True
+&gt;&gt;&gt; serializer2.validated_data
+OrderedDict([(&apos;link&apos;, &apos;http://www.bbc.co.uk/&apos;)])
+&gt;&gt;&gt; serializer2.save()
+&lt;Bookmark: http://www.bbc.co.uk/&gt;
+&gt;&gt;&gt; Bookmark.objects.all().values()
+&lt;QuerySet [{&apos;id&apos;: 1, &apos;link&apos;: &apos;google.com&apos;}, {&apos;id&apos;: 2, &apos;link&apos;: &apos;cnn.com&apos;}, {&apos;id&apos;: 3, &apos;link&apos;: &apos;apple.com&apos;}, {&apos;id&apos;: 4, &apos;link&apos;: &apos;http://www.google.com/&apos;}, {&apos;id&apos;: 5, &apos;link&apos;: &apos;http://www.cnn.com/&apos;}, {&apos;id&apos;: 6, &apos;link&apos;: &apos;http://www.bbc.co.uk/&apos;}, {&apos;id&apos;: 7, &apos;link&apos;: &apos;http://www.bbc.co.uk/&apos;}]&gt;
+&gt;&gt;&gt; Bookmark.objects.all().count()
+7
+&gt;&gt;&gt; exit()
+(bookmarks_env) <font color="#8AE234"><b>admin1@ubuntu18</b></font>:<font color="#729FCF"><b>~/Programming/WEB/Backends/bookmarks/bookmarks</b></font>$ ./manage.py shell
+Python 3.6.7 (default, Oct 22 2018, 11:32:17)
+[GCC 8.2.0] on linux
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+(InteractiveConsole)
+&gt;&gt;&gt; from locations.serializers import BookmarkSerializer
+&gt;&gt;&gt; from locations.models import Bookmark
+&gt;&gt;&gt; from rest_framework.request import Request
+&gt;&gt;&gt; from rest_framework.test import APIRequestFactory
+&gt;&gt;&gt; factory = APIRequestFactory()
+&gt;&gt;&gt; request = factory.get(&apos;/&apos;)
+&gt;&gt;&gt; serializer_context = {&apos;request&apos;: Request(request),}
+&gt;&gt;&gt; serializer = BookmarkSerializer(Bookmark.objects.all(), many=True, context=serializer_context)
+&gt;&gt;&gt; serializer.data
+[OrderedDict([(&apos;id&apos;, 1), (&apos;link&apos;, &apos;google.com&apos;)]), OrderedDict([(&apos;id&apos;, 2), (&apos;link&apos;, &apos;cnn.com&apos;)]), OrderedDict([(&apos;id&apos;, 3), (&apos;link&apos;, &apos;apple.com&apos;)]), OrderedDict([(&apos;id&apos;, 4), (&apos;link&apos;, &apos;http://www.google.com/&apos;)]), OrderedDict([(&apos;id&apos;, 5), (&apos;link&apos;, &apos;http://www.cnn.com/&apos;)]), OrderedDict([(&apos;id&apos;, 6), (&apos;link&apos;, &apos;http://www.bbc.co.uk/&apos;)]), OrderedDict([(&apos;id&apos;, 7), (&apos;link&apos;, &apos;http://www.bbc.co.uk/&apos;)])]
+&gt;&gt;&gt; len(serializer.data)
+7
+&gt;&gt;&gt;
+
+</pre>
