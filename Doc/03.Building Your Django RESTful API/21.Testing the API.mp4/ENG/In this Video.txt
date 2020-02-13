@@ -1,0 +1,5 @@
+
+    In this Video? we are going to take a look at...
+
+        * Integration testing of our API;
+        * Unit testing of methods used in our API.

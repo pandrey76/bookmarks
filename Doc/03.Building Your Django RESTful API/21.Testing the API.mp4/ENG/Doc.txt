@@ -1,0 +1,18 @@
+
+        21.Testing the API.mp4
+
+       Integration testing
+
+       Unit Testing
+
+       (bookmarks_env) admin1@ubuntu18:~/Programming/WEB/Backends/bookmarks/bookmarks$ ./manage.py test locations
+
+
+       Summary
+
+        * APIs are optimized for computer to computer communication. REST is an API using HTTP;
+        * Built a simple Hello World API using section 2 implementation strategies:
+            - The Django REST framework provides us an extensive toolkit to develop our APIs;
+            - Serializers, ModelSerializers, HyperlinkModelSerializers, APIView, generic views, and viewsets;
+            - Routers.
+        * Tested our API, both at an integration level and at a method level.
