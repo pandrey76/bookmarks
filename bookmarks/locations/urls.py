@@ -3,8 +3,16 @@ from django.urls import path
 from . import views
 from .views import SimpleHelloWord, SimpleHelloPerson, SimpleHelloPersonVersion2, TemplateHelloPerson,\
     SimpleHelloWorldAPI
-from .views import BookmarkListView, BookmarkDetailView, BookmarkList, BookmarkDetail, BookmarkViewSet
+from .views import BookmarkListView, BookmarkDetailView, BookmarkList, BookmarkDetail, BookmarkViewSet,\
+    CommentViewSet, NoteViewSet
 from rest_framework.urlpatterns import format_suffix_patterns
+
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r'bookmarks', BookmarkViewSet)
+router.register(r'comments', CommentViewSet)
+router.register(r'notes', NoteViewSet)
 
 urlpatterns = [
     path('hello1/', SimpleHelloWord.as_view(), name='hello-view1'),
@@ -12,6 +20,7 @@ urlpatterns = [
     path('hello3/<str:name>/', SimpleHelloPersonVersion2.as_view(), name='hello-view3'),
     path('hello4/<str:name>/', TemplateHelloPerson.as_view(), name='hello-view4'),
     path('hello_api/<str:name>/', SimpleHelloWorldAPI.as_view(), name='hello-api'),
+    url(r'^', include(router.urls)),
 ]
 
 standardview_urlpatters = [

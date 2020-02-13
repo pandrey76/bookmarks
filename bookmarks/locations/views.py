@@ -8,7 +8,13 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.http import Http404
 from .models import Bookmark, Comment, Note, Like
-from .serializers import BookmarkSerializer
+from .serializers import BookmarkSerializer, NoteSerializer, \
+    CommentSerializer, BookmarkLinkSerializer
+
+from .serializers import CommentSerializerWithLikes
+
+from rest_framework.decorators import action
+from django.db.models.aggregates import Count
 
 
 # Create your views here.
@@ -146,4 +152,47 @@ class BookmarkViewSet(ModelViewSet):
     """
     """
     queryset = Bookmark.objects.all()
-    serializer_class = BookmarkSerializer
+    serializer_class = BookmarkLinkSerializer
+
+    def get_queryset(self):
+        return Bookmark.objects.annotate(
+            num_likes=Count('likes')
+        )
+
+    @action(methods=['post'], detail=True)
+    def add_like(self, request, pk=None):
+        object = self.get_object()
+        like = Like()
+        like.bookmark = object
+        like.save()
+        return Response(
+            {'status': 'bookmark like set'},
+            status=status.HTTP_201_CREATED
+        )
+
+
+class NoteViewSet(ModelViewSet):
+    queryset = Note.objects.all()
+    serializer_class = NoteSerializer
+
+
+class CommentViewSet(ModelViewSet):
+    queryset = Comment.objects.all()
+    # serializer_class = CommentSerializerWithLikes
+    serializer_class = CommentSerializer
+
+    def get_queryset(self):
+        return Comment.objects.annotate(
+            num_likes=Count('likes')
+        )
+
+    @action(methods=['post'], detail=True)
+    def add_like(self, request, pk=None):
+        object = self.get_object()
+        like = Like()
+        like.comment = object
+        like.save()
+        return Response(
+            {'status': 'comment like set'},
+            status=status.HTTP_201_CREATED
+        )

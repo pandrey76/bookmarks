@@ -33,21 +33,42 @@ class BookmarkManualSerializer(Serializer):
 
 
 class CommentSerializer(HyperlinkedModelSerializer):
+
     class Meta:
         model = Comment
         fields = ['url', 'id', 'bookmark', 'time', 'text']
 
 
+class CommentSerializerWithLikes(HyperlinkedModelSerializer):
+    num_likes = IntegerField(read_only=True)
+
+    class Meta:
+        model = Comment
+        fields = ['url', 'id', 'bookmark', 'time', 'text', 'num_likes']
+
+
 class NoteSerializer(HyperlinkedModelSerializer):
+
     class Meta:
         model = Note
         fields = ['url', 'id', 'bookmark', 'time', 'text']
 
 
 class BookmarkSerializer(ModelSerializer):
-    # comments = CommentSerializer(many=True, read_only=True)
-    # notes = NoteSerializer(many=True, read_only=True)
 
     class Meta:
         model = Bookmark
         fields = ['id', 'link']
+
+
+class BookmarkLinkSerializer(HyperlinkedModelSerializer):
+    """
+
+    """
+    comments = CommentSerializer(many=True, read_only=True)
+    notes = NoteSerializer(many=True, read_only=True)
+    num_likes = IntegerField(read_only=True)
+
+    class Meta:
+        model = Bookmark
+        fields = ['url', 'id', 'link', 'comments', 'notes', 'num_likes']

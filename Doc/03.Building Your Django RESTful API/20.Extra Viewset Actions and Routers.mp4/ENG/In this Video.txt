@@ -1,0 +1,6 @@
+
+    In this Video? we are going to take a look at...
+
+        * DRF routers;
+        * Adding extra actions on viewset and ensuring routing;
+        * Which DRF view approach is the best.

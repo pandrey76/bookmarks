@@ -1,0 +1,221 @@
+
+    Extra Viewset Actions and Routers
+
+        Routers
+
+        /////////////////////////////////////////////////////////////
+
+            http://127.0.0.1:8000/locations/bookmarks/
+
+      Api Root / Bookmark List
+
+        Bookmark List
+
+        GET /locations/bookmarks/
+
+        HTTP 200 OK
+        Allow: GET, POST, HEAD, OPTIONS
+        Content-Type: application/json
+        Vary: Accept
+
+        [
+            {
+                "url": "http://127.0.0.1:8000/locations/bookmarks/3/",
+                "id": 3,
+                "link": "apple.com",
+                "comments": [
+                    {
+                        "url": "http://127.0.0.1:8000/locations/comments/1/",
+                        "id": 1,
+                        "bookmark": "http://127.0.0.1:8000/locations/bookmarks/3/",
+                        "time": "2019-04-26T06:19:43.323547Z",
+                        "text": "These people make the iPhone"
+                    }
+                ],
+                "notes": [],
+                "num_likes": 0
+            },
+            {
+                "url": "http://127.0.0.1:8000/locations/bookmarks/5/",
+                "id": 5,
+                "link": "http://www.cnn.com/",
+                "comments": [],
+                "notes": [],
+                "num_likes": 0
+            },
+            {
+                "url": "http://127.0.0.1:8000/locations/bookmarks/4/",
+                "id": 4,
+                "link": "http://www.google.com/",
+                "comments": [],
+                "notes": [],
+                "num_likes": 0
+            },
+            {
+                "url": "http://127.0.0.1:8000/locations/bookmarks/2/",
+                "id": 2,
+                "link": "cnn.com",
+                "comments": [],
+                "notes": [],
+                "num_likes": 0
+            },
+            {
+                "url": "http://127.0.0.1:8000/locations/bookmarks/7/",
+                "id": 7,
+                "link": "http://www.bbc.co.uk/",
+                "comments": [],
+                "notes": [],
+                "num_likes": 0
+            },
+            {
+                "url": "http://127.0.0.1:8000/locations/bookmarks/6/",
+                "id": 6,
+                "link": "http://www.bbc.co.uk/",
+                "comments": [],
+                "notes": [],
+                "num_likes": 0
+            },
+            {
+                "url": "http://127.0.0.1:8000/locations/bookmarks/1/",
+                "id": 1,
+                "link": "google.com",
+                "comments": [],
+                "notes": [],
+                "num_likes": 0
+            }
+        ]
+
+
+        /////////////////////////////////////////////////////////////
+
+        /////////////////////////////////////////////////////////////
+
+             http://127.0.0.1:8000/locations/bookmarks/6/
+
+             Api Root \ Bookmark List Bookmark Instance
+
+        Bookmark Instance
+
+        GET /locations/bookmarks/6/
+
+        HTTP 200 OK
+        Allow: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        Content-Type: application/json
+        Vary: Accept
+
+        {
+            "url": "http://127.0.0.1:8000/locations/bookmarks/6/",
+            "id": 6,
+            "link": "http://www.bbc.co.uk/",
+            "comments": [],
+            "notes": [],
+            "num_likes": 0
+        }
+
+        /////////////////////////////////////////////////////////////
+
+
+        Extra Viewset Actions
+
+        /////////////////////////////////////////////////////////////
+
+        http://127.0.0.1:8000/locations/bookmarks/2/
+
+             Api Root Bookmark List Bookmark Instance
+
+        Bookmark Instance
+
+        GET /locations/bookmarks/2/
+
+        HTTP 200 OK
+        Allow: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        Content-Type: application/json
+        Vary: Accept
+
+        {
+            "url": "http://127.0.0.1:8000/locations/bookmarks/2/",
+            "id": 2,
+            "link": "cnn.com",
+            "comments": [],
+            "notes": [],
+            "num_likes": 0
+        }
+
+        /////////////////////////////////////////////////////////////
+
+        Pushing "Extra Action->Add like"
+        /////////////////////////////////////////////////////////////
+
+        http://127.0.0.1:8000/locations/bookmarks/2/add_like/
+
+             Api Root Bookmark List Bookmark Instance Add like
+
+        Add like
+
+        GET /locations/bookmarks/2/add_like/
+
+        HTTP 405 Method Not Allowed
+        Allow: POST, OPTIONS
+        Content-Type: application/json
+        Vary: Accept
+
+        {
+            "detail": "Method \"GET\" not allowed."
+        }
+
+        /////////////////////////////////////////////////////////////
+
+        Pushing "POST"
+        /////////////////////////////////////////////////////////////
+
+            http://127.0.0.1:8000/locations/bookmarks/2/add_like/
+
+            Api Root Bookmark List Bookmark Instance Add like
+
+        Add like
+
+        POST /locations/bookmarks/2/add_like/
+
+        HTTP 201 Created
+        Allow: POST, OPTIONS
+        Content-Type: application/json
+        Vary: Accept
+
+        {
+            "status": "bookmark like set"
+        }
+
+        /////////////////////////////////////////////////////////////
+
+        /////////////////////////////////////////////////////////////
+
+            http://127.0.0.1:8000/locations/bookmarks/2/
+
+             Api Root Bookmark List Bookmark Instance
+
+        Bookmark Instance
+
+        GET /locations/bookmarks/2/
+
+        HTTP 200 OK
+        Allow: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        Content-Type: application/json
+        Vary: Accept
+
+        {
+            "url": "http://127.0.0.1:8000/locations/bookmarks/2/",
+            "id": 2,
+            "link": "cnn.com",
+            "comments": [],
+            "notes": [],
+            "num_likes": 1
+        }
+
+        /////////////////////////////////////////////////////////////
+
+
+        What View Strategy to Use?
+
+        * Viewsets with Routers cover many basic use cases and can be extended with extra actions;
+        * Generic views allows mix and match-use pre-built actions for standard CRUD, custom for the rest;
+        * Basic APIView for fully custom use cases.
