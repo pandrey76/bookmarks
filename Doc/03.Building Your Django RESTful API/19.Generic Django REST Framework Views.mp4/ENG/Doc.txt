@@ -1,0 +1,224 @@
+
+        Generic Django REST Framework Views
+
+        ListCreateAPIView
+
+
+
+        /////////////////////////////////////////////////////////////
+
+            http://127.0.0.1:8000/locations/bookmarks_trade_view/
+
+            Bookmark List
+
+            Bookmark List
+
+            List all bookmarks, or create a new bookmark
+
+            GET /locations/bookmarks_trade_view/
+
+            HTTP 200 OK
+            Allow: GET, POST, HEAD, OPTIONS
+            Content-Type: application/json
+            Vary: Accept
+
+            [
+                {
+                    "id": 1,
+                    "link": "google.com"
+                },
+                {
+                    "id": 2,
+                    "link": "cnn.com"
+                },
+                {
+                    "id": 3,
+                    "link": "apple.com"
+                },
+                {
+                    "id": 4,
+                    "link": "http://www.google.com/"
+                },
+                {
+                    "id": 5,
+                    "link": "http://www.cnn.com/"
+                },
+                {
+                    "id": 6,
+                    "link": "http://www.bbc.co.uk/"
+                },
+                {
+                    "id": 7,
+                    "link": "http://www.bbc.co.uk/"
+                }
+            ]
+
+        /////////////////////////////////////////////////////////////
+
+        /////////////////////////////////////////////////////////////
+
+        http://127.0.0.1:8000/locations/bookmarks_class_view/
+
+             Bookmark List
+
+        Bookmark List
+
+        GET /locations/bookmarks_class_view/
+
+        HTTP 200 OK
+        Allow: GET, POST, HEAD, OPTIONS
+        Content-Type: application/json
+        Vary: Accept
+
+        [
+            {
+                "id": 1,
+                "link": "google.com"
+            },
+            {
+                "id": 2,
+                "link": "cnn.com"
+            },
+            {
+                "id": 3,
+                "link": "apple.com"
+            },
+            {
+                "id": 4,
+                "link": "http://www.google.com/"
+            },
+            {
+                "id": 5,
+                "link": "http://www.cnn.com/"
+            },
+            {
+                "id": 6,
+                "link": "http://www.bbc.co.uk/"
+            },
+            {
+                "id": 7,
+                "link": "http://www.bbc.co.uk/"
+            }
+        ]
+
+        /////////////////////////////////////////////////////////////
+
+        /////////////////////////////////////////////////////////////
+
+        http://127.0.0.1:8000/locations/bookmarks_trade_view/7/
+
+        Bookmark List Bookmark Detail
+
+        Bookmark Detail
+
+        Retrive, update or delete a bookmark.
+
+        GET /locations/bookmarks_trade_view/7/
+
+        HTTP 200 OK
+        Allow: GET, PUT, DELETE, HEAD, OPTIONS
+        Content-Type: application/json
+        Vary: Accept
+
+        {
+            "id": 7,
+            "link": "http://www.bbc.co.uk/"
+        }
+
+        /////////////////////////////////////////////////////////////
+
+        /////////////////////////////////////////////////////////////
+
+        http://127.0.0.1:8000/locations/bookmarks_class_view/7/
+
+             Bookmark List Bookmark Detail
+
+        Bookmark Detail
+
+        GET /locations/bookmarks_class_view/7/
+
+        HTTP 200 OK
+        Allow: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        Content-Type: application/json
+        Vary: Accept
+
+        {
+            "id": 7,
+            "link": "http://www.bbc.co.uk/"
+        }
+        /////////////////////////////////////////////////////////////
+
+
+         ModeViewSet
+
+        /////////////////////////////////////////////////////////////
+
+        http://127.0.0.1:8000/locations/bookmarks_viewset/
+
+             Bookmark
+
+        Bookmark
+
+        GET /locations/bookmarks_viewset/
+
+        HTTP 200 OK
+        Allow: GET, POST, HEAD, OPTIONS
+        Content-Type: application/json
+        Vary: Accept
+
+        [
+            {
+                "id": 1,
+                "link": "google.com"
+            },
+            {
+                "id": 2,
+                "link": "cnn.com"
+            },
+            {
+                "id": 3,
+                "link": "apple.com"
+            },
+            {
+                "id": 4,
+                "link": "http://www.google.com/"
+            },
+            {
+                "id": 5,
+                "link": "http://www.cnn.com/"
+            },
+            {
+                "id": 6,
+                "link": "http://www.bbc.co.uk/"
+            },
+            {
+                "id": 7,
+                "link": "http://www.bbc.co.uk/"
+            }
+        ]
+
+
+        /////////////////////////////////////////////////////////////
+
+        /////////////////////////////////////////////////////////////
+
+        http://127.0.0.1:8000/locations/bookmarks_viewset/7/
+
+
+            Bookmark Bookmark
+
+        Bookmark
+
+        GET /locations/bookmarks_viewset/7/
+
+        HTTP 200 OK
+        Allow: GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+        Content-Type: application/json
+        Vary: Accept
+
+        {
+            "id": 7,
+            "link": "http://www.bbc.co.uk/"
+        }
+
+         /////////////////////////////////////////////////////////////

@@ -1,0 +1,6 @@
+
+    In this Video? we are going to take a look at...
+
+        * Using ListCreateAPIView for our Bookmark listing and creation;
+        * Using RetrieveUpdateDestroyAPIView for our Bookmarks detail view;
+        * Combining all of the above with ModelViewSet.

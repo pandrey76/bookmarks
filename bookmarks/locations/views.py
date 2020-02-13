@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.views.generic import View, TemplateView
 from django.http import HttpResponse, JsonResponse
 from rest_framework.views import APIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
 from rest_framework import status
 from django.http import Http404
@@ -122,3 +124,26 @@ class BookmarkDetailView(APIView):
         bookmark = self.get_object(pk)
         bookmark.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class BookmarkList(ListCreateAPIView):
+    """
+
+    """
+    queryset = Bookmark.objects.all()
+    serializer_class = BookmarkSerializer
+
+
+class BookmarkDetail(RetrieveUpdateDestroyAPIView):
+    """
+
+    """
+    queryset = Bookmark.objects.all()
+    serializer_class = BookmarkSerializer
+
+
+class BookmarkViewSet(ModelViewSet):
+    """
+    """
+    queryset = Bookmark.objects.all()
+    serializer_class = BookmarkSerializer

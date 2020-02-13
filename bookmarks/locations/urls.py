@@ -3,7 +3,7 @@ from django.urls import path
 from . import views
 from .views import SimpleHelloWord, SimpleHelloPerson, SimpleHelloPersonVersion2, TemplateHelloPerson,\
     SimpleHelloWorldAPI
-from .views import BookmarkListView, BookmarkDetailView
+from .views import BookmarkListView, BookmarkDetailView, BookmarkList, BookmarkDetail, BookmarkViewSet
 from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
@@ -16,7 +16,22 @@ urlpatterns = [
 
 standardview_urlpatters = [
     url(r'^bookmarks_trade_view/$', BookmarkListView.as_view()),
-    url(r'^bookmarks_trade_view/(?P<pk>[0-9]+)/$', BookmarkDetailView.as_view())
+    url(r'^bookmarks_trade_view/(?P<pk>[0-9]+)/$', BookmarkDetailView.as_view()),
+    url(r'^bookmarks_class_view/$', BookmarkList.as_view()),
+    url(r'^bookmarks_class_view/(?P<pk>[0-9]+)/$', BookmarkDetail.as_view()),
+    url(
+        r'^bookmarks_viewset/$',
+        BookmarkViewSet.as_view({'get': 'list', 'post': 'create'})
+    ),
+    url(
+        r'^bookmarks_viewset/(?P<pk>[0-9]+)/$',
+        BookmarkViewSet.as_view(
+            {
+                'get': 'retrieve', 'put': 'update', 'patch': 'partial_update',
+                'delete': 'destroy'
+            }
+        )
+    ),
 ]
 
 standardview_urlpatters = format_suffix_patterns(standardview_urlpatters)
